@@ -13,6 +13,8 @@ export class AddNewItemComponent {
   price: number = 0;
   duration: number = 0;
   tags: string = '';
+  error: string = '';
+  correct: string = '';
 
 
   constructor(private itemService: ItemService) {
@@ -22,10 +24,18 @@ export class AddNewItemComponent {
     this.itemService.saveItemToServer(this.name, this.description,
       this.price, this.duration, [this.tags]).subscribe(
         response => {
+          this.correct = 'Created new item!!!'
+          this.error = '';
 
-        },
-
+        },error => {
+        this.error = 'Something went wrong!!!';
+        this.correct = ''
+      }
       );
+  }
+  closeError() {
+    this.error = '';
+    this.correct = ''
   }
 
 }

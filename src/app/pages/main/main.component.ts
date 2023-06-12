@@ -3,6 +3,7 @@ import {DOCUMENT} from "@angular/common";
 import {Certificates} from "../../entity/Certificates";
 import {CertificatesService} from "../../service/certificates.service";
 import {NavbarComponent} from "../../components/navbar/navbar.component";
+import { DataTransferService } from 'src/app/service/util/data-transfer.service';
 
 @Component({
   selector: 'app-main',
@@ -11,6 +12,7 @@ import {NavbarComponent} from "../../components/navbar/navbar.component";
 })
 export class MainComponent implements OnInit {
   certificates: Certificates[] = [];
+  private allCerts: Certificates[] = [];
   private currentPage = 0;
   private pages = 0;
   private elementRef;
@@ -18,7 +20,8 @@ export class MainComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private certificateService: CertificatesService) {
+    private certificateService: CertificatesService,
+    private dataTransferService: DataTransferService) {
     this.navBar =  document.getElementsByClassName('nav')[0]
     this.elementRef = new ElementRef(this.navBar)
   }
@@ -34,6 +37,7 @@ export class MainComponent implements OnInit {
         this.currentPage += 1;
         this.certificates = this.certificates.concat(response._embedded.gift_certificates);
         console.log({all: this.pages, current: this.currentPage-1, certificates: this.certificates})
+        this.allCerts = this.certificates.copyWithin(this.certificates.length, 0);
       }
     });
   }
@@ -62,13 +66,18 @@ export class MainComponent implements OnInit {
   @HostListener('document:click', ['$event.target'])
   onClick(targetElement: HTMLElement): void {
     const clickedInside = this.elementRef.nativeElement.contains(targetElement);
-    const input = document.getElementsByClassName('search')[0]
     if (!clickedInside) {
-      this.searchByNameOrDescription(input)
+      this.searchByNameOrDescription()
     }
   }
 
-  private searchByNameOrDescription(search: Element|null) {
-    console.log(search?.getAttribute('value'));
+  private searchByNameOrDescription() {
+    const data = this.dataTransferService.data.toLowerCase();
+    if(data.length > 0) {
+      console.log('Search: ' + this.dataTransferService.data);
+      this.certificates = this.allCerts.filter(certificate => (certificate.name.toLowerCase().includes(data) || certificate.description.toLowerCase().includes(data)))
+    }else{
+      this.certificates = this.allCerts;
+    }
   }
 }
