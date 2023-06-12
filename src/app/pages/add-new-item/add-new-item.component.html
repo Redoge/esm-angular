@@ -1,0 +1,41 @@
+<div  class="main">
+  <div class="addni-div">
+    <div class="addni-title">
+      <h1>Add New Coupon</h1>
+    </div>
+    <div class="register-form">
+      <form (ngSubmit)="addNewItem()" class="form-container">
+        <div class="left">
+          <label for="login">Company</label>
+          <input class="input" type="text" id="login" name="login"><br>
+          <label for="password">Category</label>
+          <select class="input"  [(ngModel)]="tags" id="password" name="password">
+            <option>Category Name</option>
+            <option>tag1</option>
+            <option>tag2</option>
+            <option>tag3</option>
+          </select><br>
+          <label >Duration</label>
+          <input class="input" type="number" [(ngModel)]="duration" name="email"><br>
+          <label >Price</label>
+          <input class="input" [(ngModel)]="price" type="number"  name="email"><br>
+          <label >Images</label>
+          <input class="input" type="file"  name="email"><br>
+        </div>
+        <div class="right">
+          <label for="name">Item Name</label>
+          <input class="input" type="text" id="name" [(ngModel)]="name" name="first-name"><br>
+          <label for="description">Short Description</label>
+          <textarea  rows="5"  class="input" type="text" [(ngModel)]="description" id="description" name="repeat-password"></textarea><br>
+          <label for="address">Long Description</label>
+          <textarea rows="5"  class="input" type="text" id="address" name="address"></textarea><br>
+
+          <button class="white-button" type="">Back</button>
+          <button class="submit-button" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<footer>
+</footer>

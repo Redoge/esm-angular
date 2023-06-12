@@ -1,0 +1,63 @@
+<div class="main" infinite-scroll >
+  <div class="main-div" id="top">
+    <div class="main-category">
+      <div class="category-item">
+        <div class="category-image">
+
+        </div>
+        <p>Category</p>
+      </div>
+      <div class="category-item">
+        <div class="category-image">
+
+        </div>
+        <p>Category</p>
+      </div>
+      <div class="category-item">
+        <div class="category-image">
+
+        </div>
+        <p>Category</p>
+      </div>
+      <div class="category-item">
+        <div class="category-image">
+
+        </div>
+        <p>Category</p>
+      </div>
+      <div class="category-item">
+        <div class="category-image">
+
+        </div>
+        <p>Category</p>
+      </div>
+      <div class="category-item">
+        <div class="category-image">
+
+        </div>
+        <p>Category</p>
+      </div>
+      <div class="category-item">
+        <div class="category-image">
+
+        </div>
+        <p>Category</p>
+      </div>
+    </div>
+    <div class="main-coupons" >
+      <app-coupon-main *ngFor="let certs of certificates" [coupon]="certs" ></app-coupon-main>
+    </div>
+    <div class="top-button">
+      <a href="#top">Top</a>
+    </div>
+    <div class="bottom-button">
+      <a href="#bottom">Bottom</a>
+    </div>
+
+</div>
+<footer >
+  <div class="loading hidden">
+    <h2 id="loading-text">Loading...</h2>
+  </div>
+  <script src="/src/assets/js/mainPage.js"></script>
+</footer>

@@ -1,0 +1,39 @@
+<div class="main">
+  <div class="item-details-div">
+    <div class="left">
+      <div class="details-image">
+
+      </div>
+      <div class="details-description">
+        <h3>{{ certificate.name }} Description</h3>
+        <p>{{ certificate.description }}
+        </p>
+      </div>
+    </div>
+    <div class="right">
+      <div class="details-coupon-box">
+        <h1>{{ certificate.name }}</h1>
+        <p>{{ certificate.description }}
+        </p>
+        <div class="details-time-expired">
+          <p>Time Left To Buy</p>
+          <h3>{{ certificate.duration }} days</h3>
+        </div>
+        <div class="details-price">
+          <h3>${{ certificate.price }}</h3>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="korzina">
+            <h4 *ngIf="inBasket"><a (click)="saveCertificate()">Added to Cart</a></h4>
+            <h4 *ngIf="!inBasket"><a (click)="saveCertificate()">Add to Cart</a></h4>
+            <img ngSrc="/assets/img/shop.svg" height="10" width="10" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+</footer>

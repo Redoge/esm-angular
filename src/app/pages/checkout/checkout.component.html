@@ -1,0 +1,13 @@
+<div class="main">
+  <div class="addni-div">
+    <div class="addni-title">
+      <h1>Checkout</h1>
+    </div>
+    <div class="checkout-container">
+      <app-checkout-item *ngFor="let certs of certificates" [coupon]="certs"></app-checkout-item>
+      <app-checkout-total [total]="total"></app-checkout-total>
+    </div>
+  </div>
+</div>
+<footer>
+</footer>

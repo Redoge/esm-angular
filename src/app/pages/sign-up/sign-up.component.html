@@ -1,0 +1,32 @@
+<div class="main">
+  <div class="register-div">
+    <div class="register-title">
+      <h1>Register</h1>
+    </div>
+    <div class="register-form">
+      <form (ngSubmit)="register()" class="form-container" >
+        <div class="left">
+          <label for="login" >Login Name</label>
+          <input class="input" [(ngModel)]="username"type="text" id="login" name="login" required><br>
+          <label for="password">Password</label>
+          <input class="input" type="password" [(ngModel)]="password"   id="password" name="password" required><br>
+          <label for="email">Email</label>
+          <input class="input" type="email" id="email" name="email"><br>
+        </div>
+        <div class="right">
+          <label for="first-name">First Name</label>
+          <input class="input" type="text" id="first-name" name="first-name"><br>
+          <label for="repeat-password">Repeat Password</label>
+          <input class="input" type="password" id="repeat-password" name="repeat-password"><br>
+          <label for="address">Address</label>
+          <input class="input" type="text" id="address" name="address"><br>
+          <button class="white-button" type="">Cancel</button>
+          <button class="submit-button" type="submit">Sign Up</button>
+        </div>
+      </form>
+      <div *ngIf="error" class="error" (click)="closeError()">{{ error }}</div>
+    </div>
+  </div>
+</div>
+<footer>
+</footer>

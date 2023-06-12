@@ -1,0 +1,37 @@
+<div class="coupon">
+      <div class="coupon-photo">
+
+      </div>
+  <div class="coupon-info">
+    <div class="row">
+      <div class="coupon-name">
+        <h3><a [routerLink]="'/item/' + coupon.id">{{ coupon.name }}</a></h3>
+      </div>
+      <div class="coupon-like">
+        <img ngSrc='/assets/img/like.svg' alt="like" height="800" width="800">
+        <img ngSrc='/assets/img/like.svg' alt="like" height="800" width="800">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="coupon-description">
+        <p>{{ coupon.description }}</p>
+      </div>
+      <div class="coupon-expired">
+        <p>Expired in {{ coupon.duration }} days</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="coupon-buy row">
+    <div class="coupon-price">
+      <h3>{{ coupon.price | dollar}}</h3>
+    </div>
+    <div class="coupon-button" *ngIf="!inBasket">
+      <button (click)="saveCertificate(coupon)">Add to Cart</button>
+    </div>
+    <div class="coupon-button" *ngIf="inBasket">
+      <button (click)="saveCertificate(coupon)">Added to Cart</button>
+    </div>
+  </div>
+</div>
